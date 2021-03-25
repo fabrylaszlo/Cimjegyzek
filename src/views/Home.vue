@@ -1,18 +1,26 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p v-for="sz in Szemelyek" :key="sz.szemelyId">
+      {{sz.szemelyNev}}
+    </p>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import dataService from '../services/dataservice';
 
 export default {
   name: 'Home',
+  data(){
+    return{
+      Szemelyek:[]
+    }
+  },
   components: {
-    HelloWorld
+    
+  },
+  mounted(){
+dataService.szemelyek().then().catch(resp=> this.Szemelyek=resp.data)
   }
 }
 </script>
