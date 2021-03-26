@@ -1,8 +1,8 @@
 <?php
 
-require "connect.php";
+require 'connect.php';
 
-$sql="SELECT * FROM szemely";
+$sql='SELECT * FROM szemely';
 $result=$conn->query($sql);
 
 if ($result->num_rows>0) {

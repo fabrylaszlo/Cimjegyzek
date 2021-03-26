@@ -20,7 +20,7 @@ export default {
     
   },
   mounted(){
-dataService.szemelyek().then().catch(resp=> this.Szemelyek=resp.data)
+dataService.szemelyek().then(resp=> this.Szemelyek=resp.data).catch()
   }
 }
 </script>
