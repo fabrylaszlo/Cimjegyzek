@@ -2,7 +2,7 @@
 
 require 'connect.php';
 
-$sql='SELECT * FROM szemely';
+$sql='SELECT szemely.szemelyNev,telefon.telefonSzam FROM telefon INNER JOIN szemely ON telefon.szemelyId = szemely.szemelyId';
 $result=$conn->query($sql);
 
 if ($result->num_rows>0) {
@@ -13,5 +13,4 @@ if ($result->num_rows>0) {
 else{
 echo json_encode(null);
 }
-
 ?>
