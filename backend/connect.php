@@ -9,6 +9,5 @@ if ($conn->connect_error) {
    http_response_code(404);
    die('Error:'.$conn->connect_error);
 }
-
 $conn->set_charset('utf-8');
 ?>

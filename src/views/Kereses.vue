@@ -13,9 +13,9 @@
 </template>
 
 <script>
-    import dataService from '../services/dataservice'
+    import dataService from '../services/dataservice.js'
     export default {
-        name: "Search",
+        name: "Keresés",
         data() {
             return {
                 title: '',
@@ -24,6 +24,7 @@
         },
         methods: {
             search() {
+                console.log("serch gomb")
                 dataService.search({
                  szemelyNev: this.title
                 }).then(resp => {

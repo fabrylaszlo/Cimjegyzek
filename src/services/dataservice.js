@@ -12,12 +12,12 @@ export default {
                 return Promise.reject(err)
             })
     },
-    search(data) {
-        return Axios.post(BACKEND_URL + 'search.php', data, {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).then(res => {return res})
-        .catch(err=>{return Promise.reject(err)});
-    }
+    search(data){
+        return Axios.post(BACKEND_URL+'search.php',data, {headers: { 'Content-Type': 'application/x-www-form-urlencoded'}})
+        .then(res => { 
+             console.log(res);
+            return res 
+        })
+        .catch(err=> { return Promise.reject(err)});
+    }   
 }
