@@ -8,7 +8,8 @@ if (isset($postdata) && !empty($postdata)){
 
     $request = json_decode($postdata);
 
-    $sql='SELECT * FROM szemely WHERE szemelyNev LIKE ?';
+    $sql='SELECT szemely.szemelyId,szemely.szemelyNev, telefon.telefonSzam, szemely.szemelyCim FROM telefon INNER JOIN szemely ON telefon.szemelyId = szemely.szemelyId WHERE szemely.szemelyNev LIKE ?';
+    // $sql='SELECT * FROM szemely WHERE szemelyNev LIKE ?';
 
     $stmt = $conn->prepare($sql);
 
@@ -21,7 +22,7 @@ if (isset($postdata) && !empty($postdata)){
     $stmt->execute();
 
     $result = $stmt->get_result();
-
+   
     if ($result->num_rows > 0) {
         $values = $result->fetch_all(MYSQLI_ASSOC);
         echo json_encode($values);

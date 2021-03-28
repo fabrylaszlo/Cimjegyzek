@@ -1,15 +1,19 @@
 <template>
 <div>
-<div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/search">Search</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+  <fejlec/>
   <router-view/>
 </div>
   
 </template>
-
+<script>
+import fejlec from '../src/components/fejlec'
+export default {
+  name:"App",
+  components:{
+    fejlec
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

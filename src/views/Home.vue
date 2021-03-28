@@ -22,9 +22,9 @@
         <td><input type='text' v-model='szemely.szemelyCim'></td>
         <td><input type='text' v-model='szemely.emailCim'></td>
         <td><input type='text' v-model='szemely.munkahely'></td>
-        <td><input type='button' class="updatebutton" value='Frissít'
-            @click='updateRecord(index,szemely.szemekyId);'>&nbsp;
-          <input type='button' class="deletebutton" value='Törlés' @click='deleteRecord(index,szemely.szemelyId)'></td>
+        <td><input type='button' class="updatebutton gomb" v-show="elrejt" value='Frissít' @click='updateRecord(index,szemely.szemekyId);'>&nbsp;
+          <input type='button' class="deletebutton gomb" value='Törlés' v-show="elrejt" @click='deleteRecord(index,szemely.szemelyId)'>
+        </td>
       </tr>
 
     </table>
@@ -32,7 +32,8 @@
 </template>
 
 <script>
-  import dataService from '../services/dataservice';
+import dataService from '../services/dataservice';
+  
   import axios from 'axios';
   export default {
     name: 'Home',
@@ -43,11 +44,13 @@
         telefon: "",
         lakhely: "",
         email: "",
-        munkahely: ""
+        munkahely:""
       }
     },
+    props:{elrejt: Boolean},   
+    
     components: {},
-    methods: {
+    methods: {     
       Hozzaad: function () {
         if (this.nev != '' && this.lakhely != '' && this.email != '' && this.munkahely != '' && this.telefon != '') {
           axios.post('http://localhost/VUE/cimjegyzek/backend/hozzaad.php', {
@@ -62,7 +65,7 @@
               }
             })
             .then(function (response) {
-location.reload();
+              location.reload();
 
               alert(response.data);
             })
@@ -75,7 +78,6 @@ location.reload();
       },
       updateRecord: function (index, szemelyId) {
 
-        // Read value from Textbox  
         szemelyId = this.Szemelyek[index].szemelyId;
         var nev = this.Szemelyek[index].szemelyNev;
         var telefon = this.Szemelyek[index].telefonSzam;
@@ -114,16 +116,14 @@ location.reload();
             }
           })
           .then(function (response) {
-           location.reload();
+            location.reload();
 
             alert(response.data);
           })
           .catch(function (error) {
             console.log(error);
           });
-
       }
-
     },
     mounted() {
       dataService.szemelyek().then(resp => this.Szemelyek = resp.data).catch()
