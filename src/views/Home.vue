@@ -138,7 +138,4 @@ import dataService from '../services/dataservice';
   transform: translate(-50%, -50%);
     
   }
-  .home{
-    
-  }
 </style>
