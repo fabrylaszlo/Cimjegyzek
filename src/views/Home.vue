@@ -4,9 +4,9 @@
       <tr>
         <th>Személy neve</th>
         <th>Telefonszám</th>
-        <th>lakhely</th>
+        <th>Lakhely</th>
         <th>E-mail</th>
-        <th>munkahely</th>
+        <th>Munkahely</th>
       </tr>
       <tr id="hozzaadsor">
         <td><input type='text' v-model='nev'></td>
@@ -22,8 +22,8 @@
         <td><input type='text' v-model='szemely.szemelyCim'></td>
         <td><input type='text' v-model='szemely.emailCim'></td>
         <td><input type='text' v-model='szemely.munkahely'></td>
-        <td><input type='button' class="updatebutton gomb" v-show="elrejt" value='Frissít' @click='updateRecord(index,szemely.szemekyId);'>&nbsp;
-          <input type='button' class="deletebutton gomb" value='Törlés' v-show="elrejt" @click='deleteRecord(index,szemely.szemelyId)'>
+        <td><input type='button' class="updatebutton gomb"  value='Frissít' @click='updateRecord(index,szemely.szemekyId);'>&nbsp;
+          <input type='button' class="deletebutton gomb" value='Törlés' @click='deleteRecord(index,szemely.szemelyId)'>
         </td>
       </tr>
 
@@ -46,10 +46,7 @@ import dataService from '../services/dataservice';
         email: "",
         munkahely:""
       }
-    },
-    props:{elrejt: Boolean},   
-    
-    components: {},
+    },    
     methods: {     
       Hozzaad: function () {
         if (this.nev != '' && this.lakhely != '' && this.email != '' && this.munkahely != '' && this.telefon != '') {
@@ -135,5 +132,13 @@ import dataService from '../services/dataservice';
     text-align: center;
     position: absolute;
     align-self: center;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    
+  }
+  .home{
+    
   }
 </style>

@@ -2,14 +2,17 @@
 <div>
   <fejlec/>
   <router-view/>
+  <alja/>
 </div>
   
 </template>
 <script>
 import fejlec from '../src/components/fejlec'
+import alja from '../src/components/footer'
 export default {
   name:"App",
   components:{
+    alja,
     fejlec
   }
 }

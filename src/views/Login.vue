@@ -8,7 +8,6 @@
       <input type="button" value="Belépés" @click="belep" />
 
     </fieldset>
-<Home :elrejt="loggedin"/>
   </div>
 </template>
 
@@ -16,7 +15,8 @@
 import Home from '../views/Home.vue'
   export default {
     name: "Login",
-    data() {
+    
+        Footerdata() {
       return {
         password: "",
         loggedin:false
